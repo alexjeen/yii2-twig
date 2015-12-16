@@ -113,13 +113,14 @@ class Extension extends \Twig_Extension
      *
      * @param array $context context information
      * @param string $bundle asset bundle class fully qualified name
+     * @return The registered bundle     
      *
      * @since 2.0.4
      */
     public function registerAssetBundle($context, $bundle)
     {
         $bundle = str_replace('/', '\\', $bundle);
-        $this->call($bundle, 'register', [
+        return $this->call($bundle, 'register', [
             isset($context['this']) ? $context['this'] : null,
         ]);
     }
